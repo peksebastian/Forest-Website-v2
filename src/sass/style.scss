@@ -1,0 +1,901 @@
+@use 'colors' as c;
+@use 'mixins' as m;
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+	scroll-padding-top: 65px;
+}
+
+body {
+	background-color: c.$main-color;
+	font-family: 'Roboto', sans-serif;
+	background-color: c.$section-color;
+}
+
+.centering-div {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1200px;
+}
+.hide {
+	display: none;
+}
+
+.active {
+	transform: translateX(100000px);
+}
+
+//==================
+//MOBILE NAV
+//=============
+
+.mobile-nav {
+	position: sticky;
+	top: 0;
+	display: flex;
+	width: 100%;
+
+	justify-content: space-between;
+	align-items: center;
+	background-color: c.$nav-color;
+	z-index: 1000;
+
+	&__logo {
+		margin: 0.3em 1em;
+		font-size: 2.3rem;
+	}
+
+	&__hamburger {
+		margin: 0.3em 1em;
+		padding: 0.4em;
+		font-size: 2.3rem;
+		background: none;
+		border: 1px solid transparent;
+		z-index: 1001;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	&__items {
+		position: absolute;
+		top: 0;
+		right: 100000px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		height: 100vh;
+		width: 100%;
+		background-color: c.$section-color;
+	}
+
+	&__item {
+		padding: 0.7em;
+		font-size: 2.2rem;
+		color: c.$content-color;
+		text-decoration: none;
+		font-weight: 700;
+	}
+}
+
+//==================
+//DESKTOP NAV
+//=============
+.desktop-nav {
+	position: sticky;
+	top: 0;
+	display: none;
+	justify-content: center;
+	background-color: c.$nav-color;
+	z-index: 1000;
+
+	&__center {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		max-width: 1200px;
+		text-align: center;
+	}
+
+	&__logo {
+		margin: 0.5em 1em;
+	}
+
+	&__items {
+		margin: 0.5em 1em;
+	}
+
+	&__item {
+		padding: 3.3rem 1.6rem;
+		text-decoration: none;
+		color: c.$content-color;
+		transition: background-color 0.5s;
+
+		&:hover {
+			background-color: c.$hover-color;
+			color: c.$text-color;
+			cursor: pointer;
+		}
+	}
+}
+
+//==================
+//HEADER
+//=============
+
+.header {
+	display: flex;
+	align-items: center;
+	padding: 0.5em 1em;
+	height: 40vh;
+	@include m.heroImg('../img/jungle-small.jpg');
+	background-attachment: scroll;
+
+	&__text {
+		padding: 0 1.2em;
+		color: c.$text-color;
+		&-name {
+			font-size: 1.6rem;
+		}
+
+		&-title {
+			font-size: 3.2rem;
+		}
+	}
+}
+
+//==================
+//ABOUTUS
+//=============
+
+.aboutus {
+	scroll-padding-top: 40px;
+	&__title {
+		padding: 1.5em;
+		font-size: 2.4rem;
+		font-weight: 400;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__img {
+		width: 100%;
+	}
+
+	&__text {
+		padding: 1em 2.4em;
+		&-header {
+			padding: 1em 0;
+			font-size: 2rem;
+		}
+
+		&-content {
+			font-size: 1.4rem;
+			text-align: justify;
+		}
+	}
+}
+
+//==================
+//ADVENTURE
+//=============
+
+.adventure {
+	margin: 8em 0;
+	padding: 6em;
+	@include m.heroImg('../img/girl-small.jpg');
+
+	&__text {
+		padding: 0.5em 1em;
+		font-size: 3rem;
+		font-weight: 400;
+		color: c.$text-color;
+		border: solid 2px c.$text-color;
+		text-align: center;
+	}
+}
+
+//==================
+//OFFERS
+//=============
+
+.offers {
+	&__title {
+		padding: 1.5em;
+		font-size: 2.4rem;
+		font-weight: 400;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	&__text {
+		padding-bottom: 1.6em;
+		font-size: 1.4rem;
+		text-align: center;
+	}
+
+	&__cards {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&__card {
+		margin: 1em 0;
+		width: 85%;
+		height: 400px;
+		font-size: 1.2rem;
+		text-align: center;
+		border-radius: 5px;
+		box-shadow: 0 0 5px #000;
+
+		&-name {
+			margin: 1em 0;
+			font-size: 2rem;
+			font-weight: 400;
+		}
+
+		&-price {
+			font-size: 2.4rem;
+			font-weight: bold;
+		}
+
+		&-list {
+			list-style-type: none;
+		}
+
+		&-option {
+			margin: 0.7em 0;
+			font-size: 1.4rem;
+
+			&--active {
+				padding: 0.3em;
+			}
+
+			&-check {
+				margin-right: 0.5em;
+				color: c.$check-color;
+			}
+
+			&--off {
+				padding: 0.3em;
+
+				color: c.$unactive-color;
+			}
+
+			&-minus {
+				margin-right: 0.5em;
+				color: #333;
+			}
+		}
+
+		&-confirm {
+			padding: 0.6em 3em;
+			margin-top: 1.6em;
+			font-size: 2rem;
+			background-color: c.$btn-color;
+			border-radius: 8px;
+			border: 1px solid transparent;
+			box-shadow: 0 3px 10px #757272;
+			transition: background-color 0.5s;
+			cursor: pointer;
+
+			&:hover {
+				background-color: c.$btn-color-hover;
+			}
+
+			&--choosed {
+				background-color: c.$btn-active-color;
+				box-shadow: 0 3px 10px c.$btn-active-color;
+
+				&:hover {
+					background-color: c.$btn-active-color-hover;
+					box-shadow: 0 3px 10px c.$btn-active-color-hover;
+				}
+			}
+		}
+	}
+
+	&__more {
+		text-align: center;
+		&-title {
+			padding: 1em;
+			margin: 1em 0 2.3em 0;
+			font-size: 1.7rem;
+		}
+
+		&-button {
+			display: inline-block;
+			padding: 0.8em 2em;
+			font-size: 2rem;
+			text-decoration: none;
+			background-color: c.$btn-active-color;
+			color: c.$text-color;
+			border-radius: 5px;
+			box-shadow: 0 3px 10px c.$btn-active-color;
+			transition: background-color 0.5s;
+			cursor: pointer;
+
+			&:hover {
+				background-color: c.$btn-active-color-hover;
+			}
+		}
+	}
+}
+
+//==================
+//FOOTER
+//=============
+
+.footer {
+	background-color: c.$footer-color;
+	&__main {
+		display: flex;
+		flex-wrap: wrap;
+		margin-top: 4em;
+		border-bottom: 1px solid c.$line-color;
+	}
+
+	&__box {
+		padding: 2rem;
+		width: 50%;
+	}
+
+	&__title {
+		font-size: 1.4rem;
+	}
+
+	&__list {
+		list-style-type: none;
+
+		&-item {
+			display: inline-block;
+			margin: 0.5em 0;
+			font-size: 1.1rem;
+			color: c.$content-color;
+			text-decoration: none;
+		}
+	}
+
+	&__logo {
+		display: flex;
+		align-items: center;
+		font-size: 1.8rem;
+	}
+
+	&__bottom {
+		padding: 0.5em 0;
+		font-size: 1rem;
+		text-align: center;
+	}
+}
+
+//==================
+//CONTACT
+//=============
+
+.contact {
+	&__title {
+		padding: 1.5em;
+		font-size: 2.4rem;
+		font-weight: 400;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	&__name {
+		margin: 0 0 1rem 1.5rem;
+		font-size: 2rem;
+		font-weight: 400;
+	}
+
+	&__text {
+		margin: 0 0 1rem 1.5rem;
+		font-size: 1.5rem;
+	}
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		max-width: 60%;
+		margin-top: 4rem;
+		&-item {
+			margin: 1rem 1rem 1rem 1.5rem;
+			font-size: 1.2rem;
+
+			textarea {
+				max-width: 100%;
+				width: 100%;
+				min-width: 100%;
+			}
+		}
+
+		&-input {
+			padding: 0.5em 1em;
+			font-size: 1.4rem;
+		}
+	}
+
+	&__button {
+		align-self: flex-end;
+		position: relative;
+		padding: 1em 2em;
+
+		font-size: 1.5rem;
+		font-weight: 700;
+		border-radius: 8px;
+		border: 1px solid transparent;
+		box-shadow: 0 3px 10px c.$btn-active-color-hover;
+		background-color: c.$btn-active-color;
+		cursor: pointer;
+		transition: background-color 0.3s;
+
+		&:hover {
+			background-color: c.$btn-active-color-hover;
+		}
+	}
+
+	&__map {
+		margin: 4rem 1.5rem 0 1.5rem;
+
+		&-name {
+			margin-bottom: 2rem;
+			font-size: 2rem;
+		}
+		iframe {
+			width: 100%;
+			height: 300px;
+		}
+	}
+}
+
+//==================
+//MEDIA
+//=============
+
+@media (min-width: 768px) {
+	.mobile-nav {
+		&__logo {
+			font-size: 2.6rem;
+		}
+
+		&__hamburger {
+			font-size: 2.6rem;
+		}
+
+		&__item {
+			font-size: 2.6rem;
+		}
+	}
+
+	.header {
+		&__text {
+			&-name {
+				font-size: 2.4rem;
+			}
+
+			&-title {
+				font-size: 3.8rem;
+			}
+		}
+	}
+
+	.aboutus {
+		&__title {
+			padding: 1.8em;
+			font-size: 2.8rem;
+		}
+
+		&__content {
+			flex-direction: row;
+		}
+
+		&__img {
+			width: 50%;
+		}
+
+		&__text {
+			&-header {
+				font-size: 2.4rem;
+			}
+
+			&-content {
+				font-size: 1.6rem;
+			}
+		}
+	}
+
+	.adventure {
+		padding: 7em;
+	}
+
+	.offers {
+		&__title {
+			padding: 1.8em;
+			font-size: 2.8rem;
+		}
+
+		&__text {
+			font-size: 1.7rem;
+		}
+	}
+
+	.footer {
+		&__main {
+			flex-wrap: nowrap;
+		}
+
+		&__box {
+			padding: 2rem;
+			width: 25%;
+		}
+
+		&__title {
+			font-size: 1.8rem;
+		}
+
+		&__list {
+			&-item {
+				font-size: 1.4rem;
+			}
+		}
+
+		&__logo {
+			font-size: 2.8rem;
+		}
+
+		&__bottom {
+			font-size: 1.4rem;
+		}
+	}
+
+	.contact {
+		&__title {
+			padding: 1.8em;
+			font-size: 2.8rem;
+		}
+
+		&__name {
+			font-size: 2.4rem;
+		}
+
+		&__text {
+			font-size: 1.7rem;
+		}
+
+		&__form {
+			&-item {
+				font-size: 1.5rem;
+
+				&--textarea {
+					display: flex;
+					flex-direction: column;
+				}
+			}
+		}
+
+		&__button {
+			font-size: 1.7rem;
+		}
+	}
+}
+
+@media (min-width: 992px) {
+	.mobile-nav {
+		display: none;
+	}
+
+	.desktop-nav {
+		display: flex;
+
+		&__logo {
+			font-size: 4rem;
+		}
+
+		&__item {
+			font-size: 1.8rem;
+		}
+	}
+
+	.header {
+		@include m.heroImg('../img/jungle-big.jpg');
+		background-attachment: scroll;
+
+		&__text {
+			&-name {
+				font-size: 3rem;
+			}
+
+			&-title {
+				font-size: 4.8rem;
+			}
+		}
+	}
+
+	.aboutus {
+		&__title {
+			padding: 2.2em;
+			font-size: 3.4rem;
+		}
+
+		&__text {
+			padding: 1em 2.8em;
+			&-header {
+				padding: 1em 0;
+				font-size: 2.8rem;
+			}
+
+			&-content {
+				font-size: 2rem;
+			}
+		}
+	}
+
+	.adventure {
+		padding: 8em;
+		@include m.heroImg('../img/girl-big.jpg');
+
+		&__text {
+			padding: 0.7em 1.2em;
+			font-size: 3.6rem;
+		}
+	}
+
+	.offers {
+		&__title {
+			font-size: 3.4rem;
+		}
+
+		&__text {
+			padding-bottom: 1.6em;
+			font-size: 2.2rem;
+		}
+
+		&__cards {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
+
+		&__card {
+			width: 45%;
+			margin: 1em;
+			height: 500px;
+
+			&-name {
+				margin: 1.2em;
+				font-size: 2.5rem;
+			}
+
+			&-price {
+				font-size: 3.4rem;
+			}
+
+			&-option {
+				margin: 0.5em 0;
+				font-size: 2rem;
+			}
+
+			&-confirm {
+				margin-top: 1.2em;
+				font-size: 2.5rem;
+			}
+		}
+
+		&__more {
+			&-title {
+				margin: 1em 0 2.3em 0;
+				font-size: 2.2rem;
+			}
+
+			&-button {
+				font-size: 2.5rem;
+			}
+		}
+	}
+
+	.footer {
+		&__box {
+			padding: 3.5rem 2rem;
+		}
+
+		&__title {
+			font-size: 2.6rem;
+		}
+
+		&__list {
+			&-item {
+				font-size: 2.2rem;
+			}
+		}
+
+		&__logo {
+			font-size: 3.6rem;
+		}
+
+		&__bottom {
+			font-size: 2.2rem;
+		}
+	}
+
+	.contact {
+		&__title {
+			font-size: 3.4rem;
+		}
+
+		&__name {
+			margin-left: 4rem;
+			font-size: 2.5rem;
+		}
+
+		&__text {
+			margin-left: 4rem;
+			font-size: 2.2rem;
+		}
+
+		&__form {
+			&-item {
+				margin-left: 4rem;
+				font-size: 1.8rem;
+			}
+		}
+
+		&__button {
+			font-size: 2rem;
+		}
+
+		&__map {
+			margin-left: 4rem;
+
+			&-name {
+				margin-bottom: 2rem;
+				font-size: 2rem;
+			}
+			iframe {
+				width: 60%;
+				height: 400px;
+			}
+		}
+	}
+}
+
+@media (min-width: 1200px) {
+	.desktop-nav {
+		&__logo {
+			font-size: 4.8rem;
+		}
+
+		&__item {
+			padding: 3.9rem 1.8rem;
+			font-size: 2.2rem;
+		}
+	}
+
+	.header {
+		&__text {
+			&-name {
+				font-size: 3.2rem;
+			}
+
+			&-title {
+				font-size: 5.2rem;
+			}
+		}
+	}
+
+	.aboutus {
+		&__title {
+			padding: 1.8em;
+			font-size: 3.2rem;
+		}
+
+		&__text {
+			padding: 1em 3em;
+			&-header {
+				padding: 1em 0;
+				font-size: 3.2rem;
+			}
+
+			&-content {
+				font-size: 2.2rem;
+			}
+		}
+	}
+
+	.adventure {
+		margin: 10em 0;
+		padding: 10em;
+
+		&__text {
+			padding: 0.8em 1.3em;
+			font-size: 4.2rem;
+		}
+	}
+
+	.offers {
+		&__title {
+			font-size: 3.2rem;
+		}
+
+		&__card {
+			width: 30%;
+
+			font-size: 1.2rem;
+
+			&-name {
+				margin: 1em 0;
+				font-size: 2.4rem;
+			}
+
+			&-price {
+				font-size: 2.8rem;
+			}
+
+			&-option {
+				margin: 0.7em 0;
+				font-size: 1.6rem;
+			}
+
+			&-confirm {
+				padding: 0.6em 3em;
+				margin-top: 1.6em;
+				font-size: 2.4rem;
+			}
+		}
+
+		&__more {
+			&-button {
+				font-size: 2.4rem;
+			}
+		}
+	}
+
+	.contact {
+		&__title {
+			font-size: 3.2rem;
+		}
+
+		&__name {
+			font-size: 3rem;
+		}
+
+		&__text {
+			font-size: 2.2rem;
+		}
+
+		&__form {
+			&-item {
+				font-size: 2rem;
+			}
+		}
+
+		&__button {
+			font-size: 2.2rem;
+		}
+
+		&__map {
+			&-name {
+				font-size: 2.4rem;
+			}
+		}
+	}
+}

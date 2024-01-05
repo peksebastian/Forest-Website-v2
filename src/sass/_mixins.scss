@@ -1,0 +1,8 @@
+@use 'colors' as c;
+
+@mixin heroImg($Img) {
+	background-image: c.$shadow, url($Img);
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+}
